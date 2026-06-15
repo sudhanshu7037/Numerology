@@ -131,6 +131,41 @@ body {
   animation: pulse-purple-glow 5s ease-in-out infinite;
 }
 
+/* Animations definition */
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-pulse-ring-slow {
+  animation: pulseRing 3s cubic-bezier(0.215, 0.610, 0.355, 1) infinite;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseRing {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+}
+
 /* 3D Flip Card System */
 .flip-card {
   background-color: transparent;

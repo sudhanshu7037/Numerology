@@ -1,14 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Sparkles, Eye, AlertCircle } from 'lucide-react';
 
-export default function InputForm({ onGenerate }) {
+export default function InputForm({ onGenerate, prefilledDob }) {
   const [formData, setFormData] = useState({
     firstName: '',
     middleName: '',
     lastName: '',
-    dob: '',
+    dob: prefilledDob || '',
     email: ''
   });
+
+  useEffect(() => {
+    if (prefilledDob) {
+      setFormData(prev => ({ ...prev, dob: prefilledDob }));
+    }
+  }, [prefilledDob]);
 
   const [errors, setErrors] = useState({});
   const [isCalculating, setIsCalculating] = useState(false);

@@ -19,6 +19,7 @@ export default function App() {
   const [activeReport, setActiveReport] = useState(null);
   const [history, setHistory] = useState([]);
   const [stars, setStars] = useState([]);
+  const [prefilledDob, setPrefilledDob] = useState('');
 
   // Load history from localStorage on mount
   useEffect(() => {
@@ -105,7 +106,12 @@ export default function App() {
 
   const handleTabChange = (tab) => {
     setCurrentTab(tab);
-    // If shifting tabs to list of history, keep activeReport unchanged so they don't lose progress
+    // Clear prefilled DOB if they transition manually away to start fresh, or keep it if they want
+  };
+
+  const handleBeginWithDob = (dob) => {
+    setPrefilledDob(dob);
+    setCurrentTab('form');
   };
 
   return (
@@ -132,9 +138,9 @@ export default function App() {
       <Header currentTab={currentTab} setCurrentTab={handleTabChange} />
 
       {/* Main Content Area */}
-      <main className="flex-1 w-full max-w-4xl mx-auto px-4 py-8 sm:py-12 relative z-10 flex flex-col justify-center">
+      <main className={`flex-1 w-full mx-auto px-4 py-8 sm:py-12 relative z-10 flex flex-col justify-center transition-all duration-500 ${currentTab === 'home' ? 'max-w-6xl' : 'max-w-4xl'}`}>
         {currentTab === 'home' ? (
-          <Home setCurrentTab={handleTabChange} />
+          <Home setCurrentTab={handleTabChange} onBeginWithDob={handleBeginWithDob} />
         ) : currentTab === 'about' ? (
           <About />
         ) : currentTab === 'contact' ? (
@@ -154,7 +160,7 @@ export default function App() {
               onBack={handleBackToForm} 
             />
           ) : (
-            <InputForm onGenerate={handleGenerateReport} />
+            <InputForm onGenerate={handleGenerateReport} prefilledDob={prefilledDob} />
           )
         )}
       </main>
