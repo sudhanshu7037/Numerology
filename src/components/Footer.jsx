@@ -1,4 +1,5 @@
 import React from 'react';
+import { Twitter, Instagram, Github, Linkedin } from 'lucide-react';
 
 const quotes = [
   "\"Numbers rule the universe.\" — Pythagoras",
@@ -18,6 +19,23 @@ export default function Footer() {
         <p className="font-serif italic text-violet-300/75 text-sm sm:text-base tracking-wide">
           {selectedQuote}
         </p>
+
+        {/* Social Media Icons */}
+        <div className="flex gap-6 mt-2">
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-mystic-gold transition-colors" aria-label="Twitter">
+            <Twitter className="h-5 w-5" />
+          </a>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-mystic-gold transition-colors" aria-label="Instagram">
+            <Instagram className="h-5 w-5" />
+          </a>
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-mystic-gold transition-colors" aria-label="Github">
+            <Github className="h-5 w-5" />
+          </a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-mystic-gold transition-colors" aria-label="LinkedIn">
+            <Linkedin className="h-5 w-5" />
+          </a>
+        </div>
+
         <div className="flex flex-col sm:flex-row items-center justify-between w-full text-xs text-gray-500 mt-4 gap-2">
           <p>© {new Date().getFullYear()} Numerology. All spiritual calculations reserved.</p>
           <div className="flex gap-4">

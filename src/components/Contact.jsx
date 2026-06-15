@@ -10,13 +10,27 @@ export default function Contact() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setError(null);
     
-    // Simulate API request
-    setTimeout(() => {
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formState),
+      });
+
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to dispatch contact query');
+      }
+
       setLoading(false);
       setSubmitted(true);
       setFormState({
@@ -25,7 +39,11 @@ export default function Contact() {
         subject: '',
         message: ''
       });
-    }, 1500);
+    } catch (err) {
+      console.error("Failed to submit contact query:", err);
+      setError(err.message || "An error occurred while transmitting your query.");
+      setLoading(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -49,7 +67,7 @@ export default function Contact() {
                 Message Dispatched to the Cosmos
               </h3>
               <p className="text-gray-300 text-sm max-w-sm mx-auto font-sans leading-relaxed">
-                Your connection has been launched. Our cosmic numerology guild will align with your vibration and reach out shortly.
+                Your connection has been launched. A confirmation email has been dispatched to your address. Our cosmic numerology guild will align with your vibration shortly.
               </p>
             </div>
             <button
@@ -71,6 +89,11 @@ export default function Contact() {
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
+              {error && (
+                <div className="text-xs text-red-400 bg-red-950/40 border border-red-900/30 p-3 rounded-xl leading-relaxed">
+                  <strong>Error:</strong> {error}
+                </div>
+              )}
               {/* Name field */}
               <div className="space-y-2">
                 <label className="block text-[10px] font-bold uppercase tracking-wider text-gray-400">
