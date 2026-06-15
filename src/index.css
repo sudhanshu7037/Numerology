@@ -71,6 +71,99 @@ body {
   filter: drop-shadow(0 0 12px rgba(139, 92, 246, 0.6));
 }
 
+/* Keyframe Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(2deg); }
+}
+
+@keyframes orbit {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes reverse-orbit {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+@keyframes pulse-gold-glow {
+  0%, 100% { 
+    box-shadow: 0 0 15px rgba(245, 158, 11, 0.15), inset 0 0 10px rgba(245, 158, 11, 0.05); 
+    border-color: rgba(245, 158, 11, 0.15);
+  }
+  50% { 
+    box-shadow: 0 0 30px rgba(245, 158, 11, 0.45), inset 0 0 15px rgba(245, 158, 11, 0.2); 
+    border-color: rgba(245, 158, 11, 0.5);
+  }
+}
+
+@keyframes pulse-purple-glow {
+  0%, 100% { 
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.15), inset 0 0 10px rgba(139, 92, 246, 0.05); 
+  }
+  50% { 
+    box-shadow: 0 0 35px rgba(139, 92, 246, 0.45), inset 0 0 15px rgba(139, 92, 246, 0.2); 
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-orbit-1 {
+  animation: orbit 40s linear infinite;
+}
+
+.animate-orbit-2 {
+  animation: reverse-orbit 30s linear infinite;
+}
+
+.animate-orbit-3 {
+  animation: orbit 20s linear infinite;
+}
+
+.pulse-gold-glow {
+  animation: pulse-gold-glow 4s ease-in-out infinite;
+}
+
+.pulse-purple-glow {
+  animation: pulse-purple-glow 5s ease-in-out infinite;
+}
+
+/* 3D Flip Card System */
+.flip-card {
+  background-color: transparent;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 1.5rem;
+  overflow: hidden;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
