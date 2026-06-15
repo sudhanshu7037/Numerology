@@ -118,7 +118,7 @@ export default function Home({ setCurrentTab, onBeginWithDob }) {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(245,158,11,0.08)_0%,transparent_70%)] pointer-events-none" />
         
         {/* Left Side: Text and CTA */}
-        <div className="lg:col-span-6 space-y-6 text-left relative z-10 animate-fade-in-up">
+        <div className="lg:col-span-5 space-y-6 text-left relative z-10 animate-fade-in-up">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-mystic-gold/10 border border-mystic-gold/30 text-[10px] font-semibold text-mystic-gold uppercase tracking-[0.25em] animate-pulse">
             <Sparkles className="h-3 w-3" />
             Pythagorean Esoteric Engine
@@ -144,8 +144,34 @@ export default function Home({ setCurrentTab, onBeginWithDob }) {
           </div>
         </div>
 
+        {/* Middle Column: CSS Celestial Orbit Graphic (Restored) */}
+        <div className="hidden lg:flex lg:col-span-3 justify-center items-center relative h-[280px] pointer-events-none select-none">
+          {/* Orbital Core Sphere */}
+          <div className="absolute w-12 h-12 rounded-full bg-gradient-to-tr from-mystic-gold via-amber-400 to-yellow-300 blur-[1px] shadow-[0_0_25px_rgba(245,158,11,0.7)] z-20 flex items-center justify-center animate-float">
+            <span className="font-serif text-mystic-dark font-black text-xl">9</span>
+          </div>
+
+          {/* Orbit Line 1 (Inner Gold) */}
+          <div className="absolute w-24 h-24 border border-dashed border-mystic-gold/30 rounded-full animate-orbit-3 z-10 flex items-center justify-center">
+            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-mystic-gold text-mystic-dark font-mono text-[8px] font-bold px-1 py-0.2 rounded-full border border-yellow-355">1</div>
+            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 bg-mystic-gold text-mystic-dark font-mono text-[8px] font-bold px-1 py-0.2 rounded-full border border-yellow-355">7</div>
+          </div>
+
+          {/* Orbit Line 2 (Middle Purple) */}
+          <div className="absolute w-36 h-36 border border-double border-violet-500/20 rounded-full animate-orbit-2 z-10 flex items-center justify-center">
+            <div className="absolute right-0 top-1/2 transform translate-x-1/2 -translate-y-1/2 bg-violet-950/80 border border-violet-500/40 text-violet-300 font-mono text-[8px] font-bold px-1.5 py-0.2 rounded-full shadow-sm">11</div>
+            <div className="absolute left-0 top-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-violet-950/80 border border-violet-500/40 text-violet-300 font-mono text-[8px] font-bold px-1.5 py-0.2 rounded-full shadow-sm">22</div>
+          </div>
+
+          {/* Orbit Line 3 (Outer Gold Dot) */}
+          <div className="absolute w-[180px] h-[180px] border border-dotted border-mystic-gold/15 rounded-full animate-orbit-1 z-0 flex items-center justify-center">
+            <div className="absolute top-1/4 right-0 transform translate-x-1/2 bg-amber-950/80 border border-mystic-gold/40 text-mystic-gold font-mono text-[8px] font-bold px-1.5 py-0.2 rounded-full shadow-md">33</div>
+            <div className="absolute bottom-1/4 left-0 transform -translate-x-1/2 bg-amber-950/80 border border-mystic-gold/40 text-mystic-gold font-mono text-[8px] font-bold px-1.5 py-0.2 rounded-full shadow-md">3</div>
+          </div>
+        </div>
+
         {/* Right Side: Interactive Mini Calculator Widget */}
-        <div className="lg:col-span-6 relative z-10 w-full max-w-md mx-auto">
+        <div className="lg:col-span-4 relative z-10 w-full max-w-md mx-auto">
           {/* Circular Orbit Backdrops floating behind card */}
           <div className="absolute -top-10 -right-10 w-48 h-48 bg-mystic-gold/5 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-violet-600/5 rounded-full blur-3xl pointer-events-none" />
